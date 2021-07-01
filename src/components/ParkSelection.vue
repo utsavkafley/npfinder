@@ -1,25 +1,19 @@
 <template>
   <div class="searchBar">
-    <select name="stateName" id="stateName" v-model="stateCode">
-      <option selected disabled value>Choose a state</option>
-      <option v-for="state in states" :value="state.code" :key="state.name">{{state.name}}</option>
+    <select name="stateName" id="stateName" @change="stateSelected(stateCode)" v-model="stateCode">
+      <option selected disabled>Choose a state</option>
+      <option
+        v-for="state in states"
+        :value="state.code"
+        :key="state.name"
+
+      >{{state.name}}</option>
     </select>
 
-    <div class="parksWrapper">
-      <div class="parks">
-        <div v-for="park in parks" :key="park.id">
-          <img
-            :src="park.images ? park.images[0].url:console.log('no img')"
-            height="200"
-            width="225"
-          />
-          <h3>{{park.fullName}}</h3>
-          <p>{{park.description}}</p>
-        </div>
-      </div>
-
-      <div class="recentlyViewed">
-        <h3>Recently Viewed Parks</h3>
+    <!-- THIS IS JUST POSSIBLE ROUTES I CAN TAKE -->
+<!-- 
+    <div class="recentlyViewed">
+      <h3>Recently Viewed Parks</h3>
         <h2>possible ideas:</h2>
         <ul>
           <li>track recently viewed parks</li>
@@ -30,14 +24,13 @@
           <li>Question for stas: Does adding "showing data on hover" feature (to also incorporate some CSS and animations) a good use of time or not worry about CSS??</li>
           <li>Could also make a "fake reserve a campsite" feature that can allow adding to cart and checkout, for all the form and input validation stuff</li>
         </ul>
-      </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: "SearchBar",
+  name: "ParkSelection",
 
   data() {
     return {
@@ -243,22 +236,12 @@ export default {
           code: "WY",
         },
       ],
-      stateCode: "",
-      parks: [],
     };
   },
 
-  watch: {
-    stateCode: function () {
-      fetch(
-        `https://developer.nps.gov/api/v1/parks?stateCode=${this.stateCode}&api_key=3IvyBUoAFCni3kEsKBxi76jXRROgwyEBiTsPHzlk`
-      )
-        .then((response) => response.json())
-        .then(
-          function (data) {
-            this.parks = data.data;
-          }.bind(this)
-        );
+  methods: {
+    stateSelected(stateCode) {
+      this.$emit("stateSelected", stateCode);
     },
   },
 };
@@ -270,11 +253,11 @@ h3 {
   margin: 40px 0 0;
 }
 ul {
-  list-style-type:disc;
+  list-style-type: disc;
   padding: 0;
 }
 li {
-  padding-top:10px;
+  padding-top: 10px;
   margin: 0 10px;
 }
 a {

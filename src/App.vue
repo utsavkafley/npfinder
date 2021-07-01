@@ -1,17 +1,38 @@
+
+
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <SearchBar />
+  <img alt="NPF logo" src="./assets/logo.png" />
+  <ParkSelection @stateSelected="fetchParks" />
+  <ParkResultDisplay v-bind:parks="parks"/>
 </template>
 
 <script>
-import SearchBar from './components/SearchBar.vue'
-
+import ParkSelection from "./components/ParkSelection.vue";
+import ParkResultDisplay from "./components/ParksResultDisplay.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    SearchBar
-  }
-}
+    ParkSelection,
+    ParkResultDisplay,
+  },
+
+  data() {
+    return {
+      parks: [],
+    };
+  },
+
+  methods: {
+    fetchParks(stateCode) {
+      fetch(
+        `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&api_key=3IvyBUoAFCni3kEsKBxi76jXRROgwyEBiTsPHzlk`
+      )
+        .then((response) => response.json())
+        .then((data) => this. parks=data.data);
+    },
+  },
+};
+
 </script>
 
 <style>

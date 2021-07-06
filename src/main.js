@@ -1,21 +1,6 @@
-import { createApp } from 'vue'
+import Vue from 'vue'
 import App from './App.vue'
-import { createStore } from 'vuex'
+import VueRouter from 'vue-router'
 
-
-const store = createStore({
-    state() {
-        return {
-            stateCode: "",
-            parks: [],
-        }
-    },
-    mutations: {
-        fetchParkByStateCode() {
-
-        }
-    }
-})
-
-
-createApp(App).use(store).mount('#app')
+Vue.use(VueRouter)
+Vue.createApp(App).mount('#app')

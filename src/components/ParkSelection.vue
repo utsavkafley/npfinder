@@ -1,17 +1,14 @@
 <template>
   <div class="searchBar">
-    <select name="stateName" id="stateName" @change="stateSelected(stateCode)" v-model="stateCode">
-      <option selected disabled>Choose a state</option>
-      <option
-        v-for="state in states"
-        :value="state.code"
-        :key="state.name"
-
-      >{{state.name}}</option>
+    <select name="stateName" id="stateName" @change="stateSelected(stateCode)" v-model=stateCode>
+       <option value="" disabled>
+          Select an Option
+      </option>
+      <option v-for="state in states" :value="state.code" :key="state.name">{{state.name}}</option>
     </select>
 
     <!-- THIS IS JUST POSSIBLE ROUTES I CAN TAKE -->
-<!-- 
+    <!-- 
     <div class="recentlyViewed">
       <h3>Recently Viewed Parks</h3>
         <h2>possible ideas:</h2>
@@ -23,8 +20,11 @@
           <li>ANOTHER, thing I can add is reviews and stars next to the park maybe</li>
           <li>Question for stas: Does adding "showing data on hover" feature (to also incorporate some CSS and animations) a good use of time or not worry about CSS??</li>
           <li>Could also make a "fake reserve a campsite" feature that can allow adding to cart and checkout, for all the form and input validation stuff</li>
+
+
+          HOW CAN I USE: ROUTES // STATES // 
         </ul>
-    </div> -->
+    </div>-->
   </div>
 </template>
 
@@ -236,11 +236,13 @@ export default {
           code: "WY",
         },
       ],
+      stateCode:''
     };
   },
 
   methods: {
     stateSelected(stateCode) {
+      console.log(stateCode);
       this.$emit("stateSelected", stateCode);
     },
   },
@@ -249,28 +251,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: disc;
-  padding: 0;
-}
-li {
-  padding-top: 10px;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 
-.parksWrapper {
-  display: flex;
-  flex-direction: row;
-  background: #6dade9;
-}
-
-.recentlyViewed {
-  max-width: 30%;
-}
 </style>

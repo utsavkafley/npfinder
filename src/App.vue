@@ -1,5 +1,3 @@
-
-
 <template>
   <img alt="NPF logo" src="./assets/logo.png" />
   <ParkSelection @stateSelected="fetchParks" />
@@ -9,6 +7,7 @@
 <script>
 import ParkSelection from "./components/ParkSelection.vue";
 import ParkResultDisplay from "./components/ParksResultDisplay.vue";
+
 export default {
   name: "App",
   components: {
@@ -25,8 +24,7 @@ export default {
   methods: {
     fetchParks(stateCode) {
       fetch(
-        `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&api_key=3IvyBUoAFCni3kEsKBxi76jXRROgwyEBiTsPHzlk`
-      )
+        `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&api_key=3IvyBUoAFCni3kEsKBxi76jXRROgwyEBiTsPHzlk`)
         .then((response) => response.json())
         .then((data) => this. parks=data.data);
     },

@@ -91,9 +91,9 @@
   justify-content: space-between;
 }
 
-.activityList .description{;
+.activityList .description{
   text-align: left;
-  width:70%;
+  width:80%;
 }
 
 .activityList:last-child{

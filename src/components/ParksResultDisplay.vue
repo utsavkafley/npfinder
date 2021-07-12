@@ -1,6 +1,6 @@
 <template>
   <div class="parksWrapper">
-    <Park class="park" v-for="park in parks" v-bind:park="park" v-bind:key="park.id" />
+    <Park class="park" v-for="park in parks" v-bind:park="park" v-bind:key="park.id" @click="addToHistory(park)" />
   </div>
 </template>
 
@@ -17,6 +17,13 @@ export default {
   },
 
   props: ["parks"],
+
+  methods: {
+    addToHistory(park){
+      console.log("EEK")
+      this.$store.commit('addToHistory', park)
+    }
+  }
 };
 </script>
 

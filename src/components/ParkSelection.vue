@@ -1,30 +1,9 @@
 <template>
   <div class="searchBar">
-    <select name="stateName" id="stateName" @change="stateSelected(stateCode)" v-model=stateCode>
-       <option value="" disabled>
-          Select an Option
-      </option>
+    <select name="stateName" id="stateName" @change="stateSelected(stateCode)" v-model="stateCode">
+      <option value disabled>Select an Option</option>
       <option v-for="state in states" :value="state.code" :key="state.name">{{state.name}}</option>
     </select>
-
-    <!-- THIS IS JUST POSSIBLE ROUTES I CAN TAKE -->
-    <!-- 
-    <div class="recentlyViewed">
-      <h3>Recently Viewed Parks</h3>
-        <h2>possible ideas:</h2>
-        <ul>
-          <li>track recently viewed parks</li>
-          <li>or, alternatively let user check off a park if visited, we can either store it in state for session</li>
-          <li>OR, allow user to "log in" and save their parks visited (MAYBE: this can allow incorporate backend)</li>
-          <li>that can allow more room to add features which will allow me to use more technologies in the same project</li>
-          <li>ANOTHER, thing I can add is reviews and stars next to the park maybe</li>
-          <li>Question for stas: Does adding "showing data on hover" feature (to also incorporate some CSS and animations) a good use of time or not worry about CSS??</li>
-          <li>Could also make a "fake reserve a campsite" feature that can allow adding to cart and checkout, for all the form and input validation stuff</li>
-
-
-          HOW CAN I USE: ROUTES // STATES // 
-        </ul>
-    </div>-->
   </div>
 </template>
 
@@ -236,13 +215,12 @@ export default {
           code: "WY",
         },
       ],
-      stateCode:''
+      stateCode: "",
     };
   },
 
   methods: {
     stateSelected(stateCode) {
-      console.log(stateCode);
       this.$emit("stateSelected", stateCode);
     },
   },
@@ -251,5 +229,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>

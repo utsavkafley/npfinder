@@ -23,12 +23,12 @@ export default {
 
 <style>
 .parksWrapper {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    background-color: mintcream;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: mintcream;
 }
 
 .park {
@@ -37,15 +37,18 @@ export default {
   padding: 10px 10px;
   margin: 10px 10px;
   border: 2px solid black;
-  width:300px;
+  width: 300px;
+}
+
+.park:hover {
+  transition-duration: 400ms;
+  background-color: rgba(225, 250, 216, 0.6);
 }
 
 .park img {
   flex-shrink: 0;
-  height:300px;
+  height: 300px;
 }
-
-
 
 .park img {
   max-width: 100%;
@@ -56,9 +59,8 @@ export default {
   align-items: flex-end;
 }
 
-.park a{
-text-decoration: none;
-color:rgb(71, 71, 71);
+.park a {
+  text-decoration: none;
+  color: rgb(71, 71, 71);
 }
-
 </style>

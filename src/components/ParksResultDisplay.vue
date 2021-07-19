@@ -1,6 +1,12 @@
 <template>
   <div class="parksWrapper">
-    <Park class="park" v-for="park in parks" v-bind:park="park" v-bind:key="park.id" @click="addToHistory(park)" />
+    <Park
+      class="park"
+      v-for="park in parks"
+      v-bind:park="park"
+      v-bind:key="park.id"
+      @click="addToHistory(park)"
+    />
   </div>
 </template>
 
@@ -19,11 +25,10 @@ export default {
   props: ["parks"],
 
   methods: {
-    addToHistory(park){
-      console.log("EEK")
-      this.$store.commit('addToHistory', park)
-    }
-  }
+    addToHistory(park) {
+      this.$store.commit("addToHistory", park);
+    },
+  },
 };
 </script>
 
@@ -48,8 +53,8 @@ export default {
 }
 
 .park:hover {
-  transition-duration: 400ms;
-  background-color: rgba(225, 250, 216, 0.6);
+  transition-duration: 10ms;
+  background-color: darkolivegreen;
 }
 
 .park img {

@@ -1,13 +1,14 @@
 <template>
   <div id="nav">
-    <router-link to="/"><img alt="NPF logo" src="./assets/logo.png" /></router-link>
+    <router-link to="/"
+      ><img alt="NPF logo" src="./assets/logo.png"
+    /></router-link>
     <router-link to="/history">Recently Viewed Parks</router-link>
   </div>
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
-
 </script>
 
 
@@ -26,7 +27,7 @@
   align-items: center;
 }
 
-#nav img{
+#nav img {
   height: 150px;
   padding: 0px 100px;
 }

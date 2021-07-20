@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <router-link :to="`/${park.fullName}/${park.parkCode}/${park.description}`"> -->
-    <router-link :to="{ name: 'ParkDetails', params: { park: park } }">
+    <router-link :to="`/${park.parkCode}/${park.name}/${park.description}`">
       <div id="park-card">
         <img
           :src="

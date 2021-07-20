@@ -24,16 +24,18 @@ export default {
   data() {
     return {
       thingsToDo: null,
-      parkName: this.$route.params.park.fullName,
-      parkDesc: this.$route.params.park.description,
+      parkName: null,
+      parkDesc: null,
     };
   },
   created: async function () {
     await fetch(
-      `https://developer.nps.gov/api/v1/thingstodo?parkCode=${this.$route.params.park.parkCode}&api_key=3IvyBUoAFCni3kEsKBxi76jXRROgwyEBiTsPHzlk`
+      `https://developer.nps.gov/api/v1/thingstodo?parkCode=${this.$route.params.parkCode}&api_key=3IvyBUoAFCni3kEsKBxi76jXRROgwyEBiTsPHzlk`
     )
       .then((response) => response.json())
       .then((data) => (this.thingsToDo = data.data));
+    this.parkName = this.$route.params.parkName;
+    this.parkDesc = this.$route.params.parkDesc;
   },
 };
 </script>

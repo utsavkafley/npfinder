@@ -14,10 +14,9 @@ const routes = [{
         component: History
     },
     {
-        path: '/:park',
+        path: '/:parkCode/:parkName/:parkDesc',
         name: 'ParkDetails',
         component: ParkDetails,
-        props: true
     }
 ]
 

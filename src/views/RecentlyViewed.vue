@@ -6,10 +6,10 @@
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
 import ParksResultDisplay from "../components/ParksResultDisplay.vue";
 
 export default {
+  name: "RecentlyViewed",
   computed: {
     viewedParks() {
       return this.$store.state.viewHistory;

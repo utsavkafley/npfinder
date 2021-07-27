@@ -1,7 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import ParkDetails from '../views/ParkDetails'
-import History from '../views/History'
+import RecentlyViewed from '../views/RecentlyViewed'
+import NationalParks from '../views/NationalParks'
 
 const routes = [{
         path: '/',
@@ -9,14 +10,21 @@ const routes = [{
         component: Home
     },
     {
-        path: '/history',
-        name: 'History',
-        component: History
+        path: '/nationalParks/:stateCode',
+        name: 'NationalParks',
+        component: NationalParks
     },
     {
-        path: '/:parkCode/:parkName/:parkDesc',
+        path: '/recentlyViewed',
+        name: 'RecentlyViewed',
+        component: RecentlyViewed
+    },
+    {
+        path: '/:parkCode',
         name: 'ParkDetails',
         component: ParkDetails,
+        props: (route) => ({ fullName: route.query.fullName, description: route.query.description, imgUrls: route.query.imgUrls })
+
     }
 ]
 

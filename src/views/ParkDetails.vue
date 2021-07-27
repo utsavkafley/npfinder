@@ -1,7 +1,8 @@
 <template>
   <div class="parkDetails">
-    <h2>{{ parkName }}</h2>
-    <p>{{ parkDesc }}</p>
+    <h2>{{ fullName }}</h2>
+    <p>{{ description }}</p>
+    <img :src="imgUrls[1]" alt="" />
     <h3>Things to do</h3>
     <ul>
       <li
@@ -9,7 +10,7 @@
         v-for="thing in thingsToDo"
         v-bind:key="thing.id"
       >
-        <img :src="thing.images[0].url" alt />
+        <img :src="thing.images[0]" alt />
         <div class="description">
           <h4>{{ thing.title }}</h4>
           <p>{{ thing.shortDescription }}</p>
@@ -24,8 +25,6 @@ export default {
   data() {
     return {
       thingsToDo: null,
-      parkName: null,
-      parkDesc: null,
     };
   },
   created: async function () {
@@ -34,9 +33,8 @@ export default {
     )
       .then((response) => response.json())
       .then((data) => (this.thingsToDo = data.data));
-    this.parkName = this.$route.params.parkName;
-    this.parkDesc = this.$route.params.parkDesc;
   },
+  props: ["fullName", "description", "imgUrls"],
 };
 </script>
 

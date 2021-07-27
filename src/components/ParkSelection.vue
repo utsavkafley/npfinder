@@ -1,8 +1,15 @@
 <template>
   <div class="searchBar">
-    <select name="stateName" id="stateName" @change="stateSelected(stateCode)" v-model="stateCode">
+    <select
+      name="stateName"
+      id="stateName"
+      @change="stateSelected()"
+      v-model="stateCode"
+    >
       <option value disabled>Select an Option</option>
-      <option v-for="state in states" :value="state.code" :key="state.name">{{state.name}}</option>
+      <option v-for="state in states" :value="state.code" :key="state.name">
+        {{ state.name }}
+      </option>
     </select>
   </div>
 </template>
@@ -220,8 +227,8 @@ export default {
   },
 
   methods: {
-    stateSelected(stateCode) {
-      this.$emit("stateSelected", stateCode);
+    stateSelected() {
+      this.$router.push({ path: `/nationalParks/${this.stateCode}` });
     },
   },
 };

@@ -1,37 +1,51 @@
 <template>
   <div class="parksWrapper">
-    <Park
-      class="park"
+    <div
       v-for="park in parks"
-      v-bind:park="park"
       v-bind:key="park.id"
-      @click="addToHistory(park)"
-    />
+      class="park-card"
+      @click="showParkDetails(park)"
+    >
+      <img
+        :src="
+          park.images.length
+            ? park.images[0].url
+            : 'https://via.placeholder.com/200'
+        "
+      />
+      <a :href="park.url" target="__blank">
+        <h3>{{ park.name }}</h3>
+      </a>
+    </div>
   </div>
 </template>
 
-
-
 <script>
-import Park from "./Park.vue";
-
 export default {
   name: "ParkResultDisplay",
 
-  components: {
-    Park,
-  },
+  components: {},
 
   props: ["parks"],
 
   methods: {
-    addToHistory(park) {
+    showParkDetails(park) {
       this.$store.commit("addToHistory", park);
+      this.$router.push({
+        path: `/${park.parkCode}`,
+        query: {
+          fullName: park.fullName,
+          description: park.description,
+          imgUrls: [
+            "https://www.nps.gov/common/uploads/structured_data/2514A14F-D5E3-BB31-4A0C4175BF61216A.jpg",
+            "https://www.nps.gov/common/uploads/structured_data/5482A294-DB42-56E0-FCCCD03C986AE1DC.jpg",
+          ],
+        },
+      });
     },
   },
 };
 </script>
-
 
 <style>
 .parksWrapper {
@@ -43,7 +57,7 @@ export default {
   background-color: mintcream;
 }
 
-.park {
+.park-card {
   display: flex;
   flex-direction: column;
   padding: 10px 10px;
@@ -52,26 +66,21 @@ export default {
   width: 300px;
 }
 
-.park:hover {
-  transition-duration: 10ms;
-  background-color: darkolivegreen;
-}
-
-.park img {
+.park-card img {
   flex-shrink: 0;
   height: 300px;
 }
 
-.park img {
+.park-card img {
   max-width: 100%;
   display: block; /* remove extra space below image */
 }
 
-.park h3 {
+.park-card h3 {
   align-items: flex-end;
 }
 
-.park a {
+.park-card a {
   text-decoration: none;
   color: rgb(71, 71, 71);
 }

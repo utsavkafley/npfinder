@@ -1,18 +1,15 @@
 <template>
   <div class="home">
-    <ParkSelection @stateSelected="fetchParks" />
     <ParksResultDisplay v-bind:parks="parks" />
   </div>
 </template>
 
 <script>
-import ParkSelection from "../components/ParkSelection.vue";
 import ParksResultDisplay from "../components/ParksResultDisplay.vue";
 
 export default {
   name: "Home",
   components: {
-    ParkSelection,
     ParksResultDisplay,
   },
 

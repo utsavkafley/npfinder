@@ -10,7 +10,7 @@ const routes = [{
         component: Home
     },
     {
-        path: '/nationalParks',
+        path: '/nationalParks/:stateCode',
         name: 'NationalParks',
         component: NationalParks
     },
@@ -20,9 +20,11 @@ const routes = [{
         component: RecentlyViewed
     },
     {
-        path: '/:parkCode/:parkName/:parkDesc',
+        path: '/:parkCode',
         name: 'ParkDetails',
         component: ParkDetails,
+        props: (route) => ({ fullName: route.query.fullName, description: route.query.description, imgUrls: route.query.imgUrls })
+
     }
 ]
 

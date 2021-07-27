@@ -3,7 +3,7 @@
     <select
       name="stateName"
       id="stateName"
-      @change="stateSelected()"
+      @click="stateSelected()"
       v-model="stateCode"
     >
       <option value disabled>Select an Option</option>

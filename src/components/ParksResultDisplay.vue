@@ -13,9 +13,7 @@
             : 'https://via.placeholder.com/200'
         "
       />
-      <a :href="park.url" target="__blank">
-        <h3>{{ park.name }}</h3>
-      </a>
+      <h3>{{ park.name }}</h3>
     </div>
   </div>
 </template>
@@ -47,23 +45,46 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .parksWrapper {
+  background-color: #eeffee;
   margin-top: 40px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  background-color: mintcream;
+  padding: 40px 100px;
 }
 
 .park-card {
   display: flex;
   flex-direction: column;
-  padding: 10px 10px;
-  margin: 10px 10px;
-  border: 2px solid black;
-  width: 300px;
+  padding: 20px 15px 0px 15px;
+  margin: 10px 20px;
+  width: 340px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px grey;
+  background: linear-gradient(
+    white,
+    white 50%,
+    rgb(93, 184, 108) 50%,
+    rgb(93, 184, 108)
+  );
+  background-size: 100% 200%;
+  transition: all 0.2s ease;
+}
+
+.park-card:hover {
+  background-position: 100% 100%;
+}
+
+.park-card h3 {
+  background-position: 100% 100%;
+  transition: all 0.2s ease;
+}
+
+.park-card:hover h3 {
+  color: white;
 }
 
 .park-card img {
@@ -76,12 +97,13 @@ export default {
   display: block; /* remove extra space below image */
 }
 
-.park-card h3 {
-  align-items: flex-end;
-}
-
 .park-card a {
   text-decoration: none;
   color: rgb(71, 71, 71);
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: bold;
 }
 </style>

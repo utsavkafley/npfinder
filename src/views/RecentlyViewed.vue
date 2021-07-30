@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Show Recently Viewed Parks Here</h1>
+    <h1>Your Recent Viewing History</h1>
     <ParksResultDisplay v-bind:parks="viewedParks" />
   </div>
 </template>

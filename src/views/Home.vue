@@ -1,17 +1,15 @@
 <template>
   <div class="home">
-    <ParksResultDisplay v-bind:parks="parks" />
+    <h1>NATIONAL PARK FINDER</h1>
+    <h3>Find your next adventure!</h3>
+    <img src="../assets/home.png" alt="" />
   </div>
 </template>
 
 <script>
-import ParksResultDisplay from "../components/ParksResultDisplay.vue";
-
 export default {
   name: "Home",
-  components: {
-    ParksResultDisplay,
-  },
+  components: {},
 
   data() {
     return {
@@ -30,3 +28,21 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+h1 {
+  font-family: "Anton", sans-serif;
+  letter-spacing: 0.2rem;
+  font-size: 52px;
+}
+
+h3 {
+  font-family: "Great Vibes", cursive;
+  font-size: 36px;
+  letter-spacing: 0.3rem;
+}
+
+img {
+  padding-bottom: -10px;
+}
+</style>

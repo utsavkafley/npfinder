@@ -1,12 +1,14 @@
 <template>
   <div class="searchBar">
+    \
     <select
       name="stateName"
       id="stateName"
       @click="stateSelected()"
       v-model="stateCode"
+      class="select"
     >
-      <option value disabled>Select an Option</option>
+      <option value disabled>Choose a state:</option>
       <option v-for="state in states" :value="state.code" :key="state.name">
         {{ state.name }}
       </option>
@@ -236,4 +238,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+:root {
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+}
+.select {
+  width: 100%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid #777;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
 </style>

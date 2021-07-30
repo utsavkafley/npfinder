@@ -21,23 +21,36 @@ export default {
 
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Jost:wght@100&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eeffee;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Jost", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 #nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 24px;
+  padding: 0px 100px;
+  color: #2c3e50;
 }
 
 #nav img {
   height: 150px;
-  padding: 0px 100px;
 }
 
 #nav a {

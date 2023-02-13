@@ -6,7 +6,22 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+        "open-sans": ["Open Sans", ...defaultTheme.fontFamily.sans],
+        "roboto": ["Roboto", ...defaultTheme.fontFamily.sans],
+        "lato": ["Lato", ...defaultTheme.fontFamily.sans],
+      },
+
+      colors: {
+        "dark": "#202426",
+        "light": "#FBFEF9",
+        "primary": "#C76A25",
+        "secondary": "#478978",
+        "positive": "#4D8B31",
+        "negative": "#A61B26",
+        "secondary-light": " #55A086",
+      },
+      backgroundColor: {
+        woods: "#ece4d4",
       },
     },
   },

@@ -10,7 +10,7 @@ const Parks = ({ parks }) => {
             key={park.id}
           >
             <img
-              class="object-cover h-48 rounded-t rounded-lg"
+              class="object-cover h-48 rounded-t"
               src={park.images[0].url}
               alt={park.images[0].title}
             />

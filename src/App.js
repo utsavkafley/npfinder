@@ -247,7 +247,7 @@ function App() {
   ];
 
   const allStates = states.map((state) => state.abbreviation).join(",");
-  const [state, setState] = useState({});
+  const [state, setState] = useState([]);
   const [parks, setParks] = useState([]);
 
   useEffect(() => {

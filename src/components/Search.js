@@ -247,22 +247,27 @@ const Search = ({ selected, onSelect }) => {
 
 
   return (
-    <div className="flex flex-col px-24 pb-12 space-y-2">
-      <label
+    <div className="flex flex-col md:flex-row lg:flex-row 
+    md:justify-start lg:justify-start md:items-center 
+    lg:items-center gap-x-4 pt-12 px-24 pb-12 space-y-2">
+      {/* <label
         className="block text-dark font-medium font-roboto"
         htmlFor="select-input"
       >
         Select by State
-      </label>
+      </label> */}
       <select
-        className="px-4 py-2 appearance-none bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+        className="px-4 py-2 appearance-none bg-white 
+        border border-gray-400 hover:border-gray-500 
+        rounded shadow leading-tight focus:outline-none 
+        focus:shadow-outline"
         id="select-input"
         value={selected}
         selected={selected}
         onChange={handleChange}
       >
-        <option value="" disabled>
-          Select an option
+        <option value="" disabled selected>
+          Select by State
         </option>
         {states.map((state) => (
             <option key={state.abbreviation} value={state.abbreviation}>

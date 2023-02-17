@@ -1,7 +1,7 @@
-import React from "react";
+import { React, useState } from "react";
 import Button from "./Button";
 
-const Search = ({ selected, onSelect }) => {
+const Search = ({ selected, onSearch }) => {
   const states = [
     {
       name: "Alabama",
@@ -241,42 +241,48 @@ const Search = ({ selected, onSelect }) => {
     },
   ];
 
-   const handleChange = (event) => {
-        onSelect(event.target.value);
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
+  const handleButtonClick = () => {
+    onSearch(selectedOption);
+  };
 
   return (
-    <div className="flex flex-col md:flex-row lg:flex-row 
-    md:justify-start lg:justify-start md:items-center 
-    lg:items-center gap-x-4 pt-12 px-24 pb-12 space-y-2">
-      {/* <label
-        className="block text-dark font-medium font-roboto"
-        htmlFor="select-input"
-      >
-        Select by State
-      </label> */}
+    <div
+      className="flex flex-col text-dark md:flex-row lg:flex-row 
+    md:justify-start lg:justify-start md:items-baseline 
+    lg:items-baseline gap-x-4 pt-12 px-24 pb-12 space-y-2
+   "
+    >
       <select
-        className="px-4 py-2 appearance-none bg-white 
+        className="px-4 py-2 appearance-none bg-light 
         border border-gray-400 hover:border-gray-500 
         rounded shadow leading-tight focus:outline-none 
-        focus:shadow-outline"
+        focus:shadow-outline hover:cursor-pointer"
         id="select-input"
-        value={selected}
-        selected={selected}
-        onChange={handleChange}
+        value={selectedOption}
+        onChange={handleOptionChange}
       >
-        <option value="" disabled selected>
+        <option value="" disabled>
           Select by State
         </option>
         {states.map((state) => (
-            <option key={state.abbreviation} value={state.abbreviation}>
-                {state.name}
-            </option>
-        ))
-        }
+          <option key={state.abbreviation} value={state.abbreviation}>
+            {state.name}
+          </option>
+        ))}
       </select>
-      <Button text="Search" classNames={"bg-secondary hover:text-white hover:bg-secondary-light text-light py-2 px-4"} />
+      <Button
+        text="Search"
+        onClick={handleButtonClick}
+        classNames={
+          "bg-secondary hover:text-white hover:bg-secondary-light text-light py-2 px-4"
+        }
+      />
     </div>
   );
 };

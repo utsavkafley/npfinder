@@ -8,7 +8,7 @@ const Parks = ({ parks }) => {
   return (
     <div className="bg-light text-dark font-open-sans">
       <Header />
-      <ul className="mb-12 px-24 grid grid-flow-row grid-cols-1 gap-12 justify-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:px-36 xl:px-96">
+      <ul className="mb-12 px-8 grid grid-flow-row grid-cols-1 gap-12 justify-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:px-36 xl:px-96">
         {parks.map((park) => (
           <li
             className="flex flex-col rounded-lg  hover:shadow-xl shadow-md hover:cursor-pointer"

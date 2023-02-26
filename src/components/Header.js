@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="flex flex-col w-full px-24 py-12 justify-between md:flex-row lg:flex-row md:justify-around lg:justify-between lg:px-36 xl:px-96">
+    <header className="flex flex-col w-full px-8 py-12 justify-between md:flex-row lg:flex-row md:justify-around lg:justify-between lg:px-36 xl:px-96">
       <Link to="/">
         <img
           src={require("../images/header-logo.png")}

@@ -10,15 +10,18 @@ const Home = () => {
   };
 
   return (
-    <div className="text-white px-16 py-16 text-4xl" style={backgroundStyle}>
-      <p className="w-2/3 drop-shadow-lg">
+    <div
+      className="flex  flex-col text-white px-8 py-16 text-4xl justify-center lg:items-center"
+      style={backgroundStyle}
+    >
+      <p className="w-full lg:w-1/2 drop-shadow-lg p-2 bg-dark bg-opacity-10">
         The United States has 63 national parks, they are designated for their
         natural beauty, unique geological features, diverse ecosystems, and
         recreational opportunities.
       </p>
       <Link
         to="/parks"
-        className="drop-shadow-lg text-6xl font-bold hover:text-primary hover:opacity-80"
+        className="drop-shadow-lg text-4xl mt-4 font-bold hover:text-primary hover:opacity-80"
       >
         Explore Now
       </Link>

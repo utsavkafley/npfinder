@@ -25,17 +25,17 @@ const ParkDetail = () => {
   if (park.length === 0) return <h1>Loading...</h1>;
   else
     return (
-      <div className="flex flex-col">
+      <div className="flex flex-col items-center">
         <Header />
-        <div className="flex flex-col max-w-3xl m-32 gap-x-12 lg:flex-row xl:flex-row lg:mx-auto xl:mx-auto">
-          <div className="flex flex-col">
+        <div className="flex flex-col px-8 gap-x-12 lg:flex-row xl:flex-row md:w-3/4 2xl:w-1/2">
+          <div className="flex flex-col items-start">
             <h1 className="text-3xl font-bold text-dark mb-4">
               {park.fullName}
             </h1>
             <img
               src={park.images[0].url}
               alt="Arches National Park"
-              className="w-full mb-4"
+              className="h-72 object-cover md:object-contain mb-4"
             />
             <div className="mb-4">
               <p className="text-dark">{park.description}</p>
@@ -43,7 +43,7 @@ const ParkDetail = () => {
           </div>
           <div className="flex flex-col">
             <h2 className="text-xl font-bold text-dark mb-2">Activities</h2>
-            <ul className="flex flex-row flex-wrap">
+            <ul className="flex flex-row flex-wrap mb-4">
               {park.activities.map((activity) => (
                 <li
                   className="bg-secondary rounded-md mx-2 my-1 text-light px-2 py-1"

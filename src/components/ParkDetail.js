@@ -27,7 +27,7 @@ const ParkDetail = () => {
     return (
       <div className="flex flex-col items-center">
         <Header />
-        <div className="flex flex-col px-8 gap-x-12 lg:flex-row xl:flex-row md:w-3/4 2xl:w-1/2">
+        <div className="flex flex-col px-8 gap-x-12 h-screen lg:flex-row xl:flex-row md:w-3/4 2xl:w-1/2">
           <div className="flex flex-col items-start">
             <h1 className="text-3xl font-bold text-dark mb-4">
               {park.fullName}

@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import Button from "./Button";
 
-const Search = ({ selected, onSearch }) => {
+const Search = ({ onSearch }) => {
   const states = [
     {
       name: "Alabama",
@@ -248,21 +248,15 @@ const Search = ({ selected, onSearch }) => {
   };
 
   const handleButtonClick = () => {
+    console.log("clicked button");
     onSearch(selectedOption);
   };
 
   return (
-    <div
-      className="flex flex-col text-dark md:flex-row lg:flex-row 
-    md:justify-start lg:justify-start md:items-baseline 
-    lg:items-baseline gap-x-4 pt-12 px-24 pb-12 space-y-2
-   "
-    >
+    <div className="flex flex-col px-8 md:flex-row gap-4 mb-8 md:w-3/4 2xl:w-1/2">
       <select
-        className="px-4 py-2 appearance-none bg-light 
-        border border-gray-400 hover:border-gray-500 
-        rounded shadow leading-tight focus:outline-none 
-        focus:shadow-outline hover:cursor-pointer"
+        className="px-4 py-2  
+        rounded shadow leading-tight border-secondary border-2 hover:cursor-pointer"
         id="select-input"
         value={selectedOption}
         onChange={handleOptionChange}

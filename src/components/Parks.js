@@ -1,17 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import Header from "./Header";
+import Search from "./Search";
 import Footer from "./Footer";
 
-const Parks = ({ parks }) => {
+const Parks = ({ onStateSelect, parks }) => {
   if (!parks) return <h1>Loading...</h1>;
   return (
     <div className="flex flex-col bg-light text-dark font-open-sans items-center">
       <Header />
-      <ul className="mb-12 px-8 grid grid-flow-row grid-cols-1 gap-12 justify-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:w-3/4 2xl:w-1/2">
+      <Search onSearch={onStateSelect} />
+      <ul className="grid grid-flow-row grid-cols-1 gap-12 justify-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:w-3/4 2xl:w-1/2 mb-12 px-8 min-h-screen">
         {parks.map((park) => (
           <li
-            className="flex flex-col rounded-lg  hover:shadow-xl shadow-md hover:cursor-pointer"
+            className="flex flex-col rounded-lg h-fit  hover:shadow-xl shadow-md hover:cursor-pointer"
             key={park.id}
           >
             <Link to={`/parkDetail/${park.parkCode}`}>

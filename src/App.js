@@ -10,9 +10,9 @@ import Home from "./components/Home";
 
 function App() {
   const [parks, setParks] = useState([]);
-  const [state, setState] = useState("");
   const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log(API_KEY);
+  const [state, setState] = useState("");
+
   useEffect(() => {
     axios
       .get(
@@ -27,11 +27,20 @@ function App() {
         );
       });
   }, [state, API_KEY]);
+
+  const handleStateSelect = (state) => {
+    console.log("state selected: ", state);
+    setState(state);
+  };
+
   return (
     <Router>
       <Routes>
         <Route path="parkDetail/:parkCode" element={<ParkDetail />} />
-        <Route path="/parks" element={<Parks parks={parks} />} />
+        <Route
+          path="/parks"
+          element={<Parks onStateSelect={handleStateSelect} parks={parks} />}
+        />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>

@@ -10,7 +10,6 @@ import Home from "./components/Home";
 
 function App() {
   const [parks, setParks] = useState([]);
-  const API_KEY = process.env.REACT_APP_API_KEY;
   const [state, setState] = useState("");
 
   useEffect(() => {

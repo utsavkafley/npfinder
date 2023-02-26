@@ -11,11 +11,11 @@ import Home from "./components/Home";
 function App() {
   const [parks, setParks] = useState([]);
   const [state, setState] = useState("");
-
+  const API_KEY = "3IvyBUoAFCni3kEsKBxi76jXRROgwyEBiTsPHzlk";
   useEffect(() => {
     axios
       .get(
-        `https://developer.nps.gov/api/v1/parks?limit=500&stateCode=${state}&api_key=${process.env.API_KEY}`
+        `https://developer.nps.gov/api/v1/parks?limit=500&stateCode=${state}&api_key=${API_KEY}`
       )
       .then((response) => {
         setParks(

@@ -25,7 +25,7 @@ function App() {
           })
         );
       });
-  }, [state, API_KEY]);
+  }, [state]);
 
   const handleStateSelect = (state) => {
     console.log("state selected: ", state);

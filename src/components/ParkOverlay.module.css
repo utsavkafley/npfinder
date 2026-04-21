@@ -1,0 +1,202 @@
+/* ─── Overlay shell ──────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--color-bg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transform: translateY(100%);
+  opacity: 0;
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity   0.3s ease;
+}
+
+.overlay.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ─── Back bar ───────────────────────────────────────────────── */
+.backBar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--header-border);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--content-pad);
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  margin-left: calc(-1 * var(--space-3));
+  transition: color 0.2s ease;
+}
+
+.backBtn:hover {
+  color: var(--color-text);
+}
+
+/* ─── Hero image ─────────────────────────────────────────────── */
+.heroWrapper {
+  position: relative;
+  height: clamp(320px, 55vh, 600px);
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.heroGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.20) 55%,
+    transparent 100%
+  );
+}
+
+.heroText {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-16) var(--content-pad) var(--space-10);
+  color: #fff;
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.designation {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: var(--space-2);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-2);
+}
+
+.location {
+  font-size: 0.85rem;
+  opacity: 0.65;
+  letter-spacing: 0.06em;
+}
+
+/* ─── Body ───────────────────────────────────────────────────── */
+.body {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-12) var(--content-pad) var(--space-20);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .body {
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-16);
+  }
+}
+
+.description {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.01em;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tag {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.tag:hover {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+/* ─── Loading skeleton ───────────────────────────────────────── */
+.loading {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroSkeleton {
+  height: clamp(320px, 55vh, 600px);
+  background: linear-gradient(90deg, var(--skeleton-base) 0%, var(--skeleton-shine) 50%, var(--skeleton-base) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.bodySkeleton {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  width: 100%;
+  padding: var(--space-12) var(--content-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.skeletonLine {
+  height: 1rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--skeleton-base) 0%, var(--skeleton-shine) 50%, var(--skeleton-base) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}

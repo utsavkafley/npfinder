@@ -1,0 +1,95 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* ─── Search input ───────────────────────────────────────────── */
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--color-text-subtle);
+  pointer-events: none;
+}
+
+.searchInput {
+  padding: 0.55rem 1rem 0.55rem 2.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  width: 14rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(71, 137, 120, 0.15);
+}
+
+/* ─── State select ───────────────────────────────────────────── */
+.select {
+  padding: 0.55rem 2rem 0.55rem 0.875rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text);
+  cursor: pointer;
+  appearance: auto;
+  transition: border-color 0.2s ease;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(71, 137, 120, 0.15);
+}
+
+/* ─── Clear button ───────────────────────────────────────────── */
+.clearBtn {
+  padding: 0.55rem 0.875rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: none;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.clearBtn:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+/* ─── Count label ────────────────────────────────────────────── */
+.count {
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+  letter-spacing: 0.03em;
+}

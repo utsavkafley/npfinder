@@ -1,0 +1,106 @@
+.card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  background: var(--color-surface);
+  outline: none;
+}
+
+.card:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-primary);
+}
+
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .image,
+.card:focus-visible .image {
+  transform: scale(1.06);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem 1.25rem 1.25rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.30) 60%, transparent 100%);
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.card:hover .overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.40) 60%, transparent 100%);
+}
+
+.designation {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 0.3rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+/* ─── Compare button ─────────────────────────────────────────── */
+.compareBtn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover .compareBtn,
+.card:focus-visible .compareBtn,
+.compareBtnActive {
+  opacity: 1 !important;
+}
+
+.compareBtnActive {
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+}
+
+.compareBtn:disabled {
+  opacity: 0.3 !important;
+  cursor: not-allowed;
+}
+
+.compareBtn:not(:disabled):hover {
+  background: rgba(0, 0, 0, 0.55);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.compareBtnActive:not(:disabled):hover {
+  background: var(--color-accent-dark) !important;
+}

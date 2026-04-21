@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# outdors
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A cinematic single-page app for exploring US National Park Service sites — built with React + Vite, styled with CSS Modules, powered by the [NPS API](https://www.nps.gov/subjects/developer/api-documentation.htm).
 
-## Available Scripts
+## Setup
 
-In the project directory, you can run:
+```bash
+npm install
+cp .env.example .env   # add your API keys
+npm run dev
+```
 
-### `npm start`
+**NPS API key** — free at [developer.nps.gov](https://www.nps.gov/subjects/developer/get-started.htm)  
+**Stadia Maps key** — free tier at [stadiamaps.com](https://stadiamaps.com) (optional in dev; localhost works without a key)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React 18** + **React Router 6**
+- **Vite** (build tooling)
+- **CSS Modules** + CSS custom properties (no framework)
+- **Axios** (API requests)
+- **NPS API** (parks data — all ~400+ NPS units)
+- **MapLibre GL JS** + **Stadia Maps** (map view)
+- **BBH Bartle** (brand font) + **Fraunces** (display) + **Inter** (body)
+- **Vercel** (deployment)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Roadmap
 
-### `npm run build`
+### Phase 1 — Foundation ✅
+- Migrated CRA → Vite
+- Removed Tailwind; replaced with CSS Modules + CSS custom properties
+- API key moved to `.env`
+- Fixed ParkDetail loading bug
+- Removed dead files (Contact stub, CRA boilerplate)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Phase 2 — Cinematic Redesign ✅
+- Rebranded to **outdors** — expanded scope beyond National Parks
+- Design system: Fraunces (display) + Inter (body), earthy token palette, dark mode
+- Fluid single-page architecture: park detail as full-screen slide-up overlay
+- Cinematic hero with Park of the Day (date-deterministic, rotates daily)
+- Card grid: 4:3 aspect ratio, image zoom on hover, gradient name overlay
+- Skeleton loaders, smooth CSS transitions
+- Sticky glass-morphism header with dark mode toggle (persisted via localStorage)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Phase 3 — Features ✅
+- **Expanded scope** — all ~400+ NPS-managed units (monuments, seashores, historic sites, etc.)
+- **Multi-facet filters** — designation type + state + live text search
+- **Map view** — MapLibre GL JS, Stadia Maps outdoor tiles, clustered GeoJSON markers, theme-aware (light → outdoors style, dark → smooth dark)
+- **Compare mode** — select up to 3 sites, side-by-side: image, location, entry fee, activities, description
+- **BBH Bartle** brand font under logo in header
+- Bundle code-split: MapLibre in its own lazy chunk (282KB gzip)

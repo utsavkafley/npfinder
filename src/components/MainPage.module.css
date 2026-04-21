@@ -136,6 +136,7 @@
 
 /* ─── Discovery ──────────────────────────────────────────────── */
 .discovery {
+  scroll-margin-top: var(--header-height);
   background: var(--color-bg);
   transition: background 0.3s ease;
 }

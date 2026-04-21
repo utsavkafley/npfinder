@@ -78,11 +78,12 @@ const CURATED_DESIGNATIONS = [
   'National Memorial',
 ];
 
-const FilterBar = ({ onStateSelect, onTextSearch, onDesignationSelect, designations = [], parkCount }) => {
+const FilterBar = ({ onStateSelect, onTextSearch, onDesignationSelect, onActivitySelect, designations = [], activities = [], parkCount }) => {
   const curatedOptions = CURATED_DESIGNATIONS.filter((d) => designations.includes(d));
   const [selectedState, setSelectedState] = useState('');
   const [query, setQuery] = useState('');
   const [selectedDesignation, setSelectedDesignation] = useState('National Park');
+  const [selectedActivity, setSelectedActivity] = useState('');
 
   const handleStateChange = (e) => {
     const val = e.target.value;
@@ -102,16 +103,24 @@ const FilterBar = ({ onStateSelect, onTextSearch, onDesignationSelect, designati
     onDesignationSelect(val);
   };
 
+  const handleActivityChange = (e) => {
+    const val = e.target.value;
+    setSelectedActivity(val);
+    onActivitySelect(val);
+  };
+
   const handleClear = () => {
     setSelectedState('');
     setQuery('');
     setSelectedDesignation('National Park');
+    setSelectedActivity('');
     onStateSelect('');
     onTextSearch('');
     onDesignationSelect('National Park');
+    onActivitySelect('');
   };
 
-  const isFiltered = selectedState || query || selectedDesignation !== 'National Park';
+  const isFiltered = selectedState || query || selectedDesignation !== 'National Park' || selectedActivity;
 
   return (
     <div className={styles.bar}>
@@ -142,6 +151,20 @@ const FilterBar = ({ onStateSelect, onTextSearch, onDesignationSelect, designati
             <option key={d} value={d}>{d}</option>
           ))}
         </select>
+
+        {activities.length > 0 && (
+          <select
+            className={styles.select}
+            value={selectedActivity}
+            onChange={handleActivityChange}
+            aria-label="Filter by activity"
+          >
+            <option value="">All Activities</option>
+            {activities.map((a) => (
+              <option key={a} value={a}>{a}</option>
+            ))}
+          </select>
+        )}
 
         <select
           className={styles.select}

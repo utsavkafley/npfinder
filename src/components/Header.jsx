@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
 import styles from './Header.module.css';
-import logoSrc from '../images/outdors-logo.png';
+import logoWebP from '../images/outdors-logo.webp';
+import logoPng  from '../images/outdors-logo.png';
 
 const SunIcon = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -27,7 +28,10 @@ const Header = ({ onDiscover }) => {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link to="/" className={styles.brand}>
-          <img src={logoSrc} className={styles.logo} alt="" aria-hidden="true" />
+          <picture>
+            <source srcSet={logoWebP} type="image/webp" />
+            <img src={logoPng} className={styles.logo} alt="" aria-hidden="true" />
+          </picture>
           <span className={styles.brandName}>outdors</span>
         </Link>
 

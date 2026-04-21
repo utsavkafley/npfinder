@@ -9,9 +9,40 @@ const BackIcon = () => (
   </svg>
 );
 
+const MAX_IMAGES = 10;
+const SLIDE_INTERVAL = 8000;
+
 const ParkOverlay = ({ parkCode, isVisible, onClose }) => {
   const [park, setPark] = useState(null);
+  const [activeImg, setActiveImg] = useState(0);
 
+  // Slice images once park is loaded
+  const images = park ? park.images.slice(0, MAX_IMAGES) : [];
+
+  // Reset slide index when navigating to a new park
+  useEffect(() => {
+    setActiveImg(0);
+  }, [parkCode]);
+
+  // Preload all images as soon as park data arrives
+  useEffect(() => {
+    if (!park) return;
+    park.images.slice(0, MAX_IMAGES).forEach((img) => {
+      const el = new Image();
+      el.src = img.url;
+    });
+  }, [park]);
+
+  // Auto-advance slideshow
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setActiveImg((i) => (i + 1) % images.length);
+    }, SLIDE_INTERVAL);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  // Fetch park detail
   useEffect(() => {
     if (!parkCode) return;
     setPark(null);
@@ -51,23 +82,43 @@ const ParkOverlay = ({ parkCode, isVisible, onClose }) => {
         </div>
       ) : (
         <>
-          {/* ── Hero image ──────────────────────────────────── */}
+          {/* ── Hero ────────────────────────────────────────── */}
           <div className={styles.heroWrapper}>
-            <img
-              className={styles.heroImage}
-              src={park.images[0]?.url}
-              alt={park.images[0]?.title || park.fullName}
-            />
+            {/* All images rendered at once — browser preloads them all.
+                Crossfade is pure CSS opacity transition, no remounting. */}
+            {images.map((img, i) => (
+              <img
+                key={img.url}
+                className={`${styles.heroImage} ${i === activeImg ? styles.heroImageActive : ''}`}
+                src={img.url}
+                alt={i === activeImg ? (img.altText || img.title || park.fullName) : ''}
+                aria-hidden={i !== activeImg ? 'true' : undefined}
+              />
+            ))}
+
             <div className={styles.heroGradient} />
+
             <div className={styles.heroText}>
               <p className={styles.designation}>{park.designation}</p>
               <h1 className={styles.title}>{park.fullName}</h1>
               {park.states && (
-                <p className={styles.location}>
-                  {expandStates(park.states)}
-                </p>
+                <p className={styles.location}>{expandStates(park.states)}</p>
               )}
             </div>
+
+            {images.length > 1 && (
+              <div className={styles.heroDots}>
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`${styles.heroDot} ${i === activeImg ? styles.heroDotActive : ''}`}
+                    onClick={() => setActiveImg(i)}
+                    aria-label={`Photo ${i + 1}`}
+                    aria-pressed={i === activeImg}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           {/* ── Body ────────────────────────────────────────── */}

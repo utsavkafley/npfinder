@@ -27,7 +27,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--header-border);
-  height: var(--header-height);
+  height: var(--backbar-height);
   display: flex;
   align-items: center;
   padding: 0 var(--content-pad);
@@ -63,10 +63,18 @@
 }
 
 .heroImage {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 35%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.heroImageActive {
+  opacity: 1;
 }
 
 .heroGradient {
@@ -113,6 +121,38 @@
   font-size: 0.85rem;
   opacity: 0.65;
   letter-spacing: 0.06em;
+}
+
+/* ─── Slideshow dots ─────────────────────────────────────────── */
+.heroDots {
+  position: absolute;
+  bottom: var(--space-5);
+  right: var(--content-pad);
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  z-index: 2;
+}
+
+.heroDot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.heroDot:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.heroDotActive {
+  background: #fff;
+  transform: scale(1.45);
 }
 
 /* ─── Body ───────────────────────────────────────────────────── */

@@ -30,6 +30,7 @@ const MainPage = ({ parks, onStateSelect }) => {
   // ── Filters ──────────────────────────────────────────────────
   const [searchQuery, setSearchQuery] = useState('');
   const [designationFilter, setDesignationFilter] = useState('National Park');
+  const [activityFilter, setActivityFilter] = useState('');
 
   // ── View mode ─────────────────────────────────────────────────
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'map'
@@ -84,15 +85,22 @@ const MainPage = ({ parks, onStateSelect }) => {
     return [...set].sort();
   }, [parks]);
 
+  const activities = useMemo(() => {
+    const set = new Set();
+    parks.forEach((p) => p.activities?.forEach((a) => set.add(a.name)));
+    return [...set].sort();
+  }, [parks]);
+
   const visibleParks = useMemo(() => {
     return parks.filter((p) => {
       if (designationFilter) {
-        // "National Park" matches both "National Park" and "National Park & Preserve"
-        // so all 63 congressionally-designated National Parks are counted correctly
         const matches = designationFilter === 'National Park'
           ? p.designation?.startsWith('National Park')
           : p.designation === designationFilter;
         if (!matches) return false;
+      }
+      if (activityFilter) {
+        if (!p.activities?.some((a) => a.name === activityFilter)) return false;
       }
       if (!searchQuery) return true;
       const q = searchQuery.toLowerCase();
@@ -101,7 +109,7 @@ const MainPage = ({ parks, onStateSelect }) => {
         p.states?.toLowerCase().includes(q)
       );
     });
-  }, [parks, designationFilter, searchQuery]);
+  }, [parks, designationFilter, activityFilter, searchQuery]);
 
   const featuredPark = parks.length > 0 ? parks[getDayOfYear() % parks.length] : null;
   const heroImage = featuredPark?.images?.[0]?.url;
@@ -159,7 +167,7 @@ const MainPage = ({ parks, onStateSelect }) => {
       <section
         ref={discoveryRef}
         className={styles.discovery}
-        style={hasCompareBar ? { paddingBottom: '5rem' } : undefined}
+        style={hasCompareBar ? { paddingBottom: 'var(--compare-bar-height)' } : undefined}
       >
         <div className={styles.discoveryInner}>
           <div className={styles.discoveryHeader}>
@@ -186,7 +194,9 @@ const MainPage = ({ parks, onStateSelect }) => {
             onStateSelect={onStateSelect}
             onTextSearch={setSearchQuery}
             onDesignationSelect={setDesignationFilter}
+            onActivitySelect={setActivityFilter}
             designations={designations}
+            activities={activities}
             parkCount={parks.length > 0 ? visibleParks.length : undefined}
           />
 

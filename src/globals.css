@@ -66,9 +66,11 @@
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.16);
 
   /* Layout */
-  --header-height: 7rem;
-  --content-max:   1200px;
-  --content-pad:   clamp(1rem, 5vw, 3rem);
+  --header-height:    180px; /* main sticky header — logo + wordmark */
+  --backbar-height:    60px; /* compact nav bar inside overlays       */
+  --compare-bar-height: 5rem; /* fixed bottom compare bar             */
+  --content-max:    1200px;
+  --content-pad:    clamp(1rem, 5vw, 3rem);
 }
 
 /* ─── Dark mode ──────────────────────────────────────────────── */

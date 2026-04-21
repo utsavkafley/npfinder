@@ -24,7 +24,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--header-border);
-  height: var(--header-height);
+  height: var(--backbar-height);
   display: flex;
   align-items: center;
   padding: 0 var(--content-pad);
@@ -67,7 +67,7 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1px;
   background: var(--color-border);
-  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100vh - var(--backbar-height));
 }
 
 /* ─── Column ─────────────────────────────────────────────────── */

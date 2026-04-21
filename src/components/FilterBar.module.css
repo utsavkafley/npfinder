@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: var(--space-4);
   margin-bottom: var(--space-8);
 }
@@ -11,7 +10,8 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
 }
 
 /* ─── Search input ───────────────────────────────────────────── */
@@ -19,6 +19,8 @@
   position: relative;
   display: flex;
   align-items: center;
+  flex: 1.5;
+  min-width: 0;
 }
 
 .searchIcon {
@@ -36,7 +38,7 @@
   font-family: var(--font-body);
   font-size: 0.875rem;
   color: var(--color-text);
-  width: 14rem;
+  width: 100%;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -50,7 +52,7 @@
   box-shadow: 0 0 0 3px rgba(71, 137, 120, 0.15);
 }
 
-/* ─── State select ───────────────────────────────────────────── */
+/* ─── Selects ────────────────────────────────────────────────── */
 .select {
   padding: 0.55rem 2rem 0.55rem 0.875rem;
   border-radius: var(--radius-md);
@@ -61,6 +63,8 @@
   color: var(--color-text);
   cursor: pointer;
   appearance: auto;
+  flex: 1;
+  min-width: 0;
   transition: border-color 0.2s ease;
 }
 
@@ -92,4 +96,24 @@
   font-size: 0.8rem;
   color: var(--color-text-subtle);
   letter-spacing: 0.03em;
+}
+
+/* ─── Mobile ─────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .bar {
+    flex-wrap: wrap;
+  }
+
+  .controls {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .inputWrapper {
+    flex: 1 1 100%;
+  }
+
+  .select {
+    flex: 1 1 calc(50% - var(--space-3) / 2);
+  }
 }
